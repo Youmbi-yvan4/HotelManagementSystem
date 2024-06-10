@@ -5,7 +5,7 @@ import java.util.List;
 import com.JavaWeb.HotelManagementSystem.Models.User;
 
 public interface UserService {
-     User saveUser(User User);
+    User saveUser(User User);
 
     List<User> findAll();
 

@@ -6,10 +6,10 @@ import com.JavaWeb.HotelManagementSystem.Models.Hotel;
 
 public interface HotelService {
 
-    Hotel saveHotel(Hotel hotel);
+	Hotel saveHotel(Hotel hotel);
 
 	List<Hotel> findAll();
-    
+
 	Hotel getHotelById(Long id);
 
 	void updateHotel(Long id, Hotel updatedHotel);

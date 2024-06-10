@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.JavaWeb.HotelManagementSystem.Models.Room;
 import com.JavaWeb.HotelManagementSystem.Repositories.RoomRepository;
 
+import org.springframework.stereotype.Service;
+@Service
 public class RoomServiceImp implements RoomService{
       
     @Autowired

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.JavaWeb.HotelManagementSystem.Models.Hotel;
 import com.JavaWeb.HotelManagementSystem.Repositories.HotelRepository;
 
+import org.springframework.stereotype.Service;
+@Service
 public class HotelServiceImp implements HotelService {
     @Autowired
     private HotelRepository HRepo;

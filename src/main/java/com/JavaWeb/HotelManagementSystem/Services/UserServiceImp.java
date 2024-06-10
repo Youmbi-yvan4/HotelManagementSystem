@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import com.JavaWeb.HotelManagementSystem.Models.User;
 import com.JavaWeb.HotelManagementSystem.Repositories.UserRepository;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class UserServiceImp implements UserService {
 
     @Autowired

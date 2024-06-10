@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.JavaWeb.HotelManagementSystem.Models.Reservation;
 import com.JavaWeb.HotelManagementSystem.Repositories.ReservationRepository;
 
+import org.springframework.stereotype.Service;
+@Service
 public class ReservationServiceImp implements ReservationService{
     
     @Autowired
