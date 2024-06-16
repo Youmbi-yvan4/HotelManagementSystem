@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking - Contact Us</title>
-    <link rel="stylesheet" href="/Global.css">
+    <link rel="stylesheet" href="/Static/Global.css">
 </head>
 <body>
     <header>
         <div class="navbar">
-            <div class="logo">Booking</div>
+            <div class="logo" th:text="${companyName}">Booking</div>
             <nav>
                 <ul>
-                    <li><a href="HomePage.html">Home</a></li>
-                    <li><a href="PageDifferentePieces.html">Rooms</a></li>
-                    <li><a href="AboutUs.html">About Us</a></li>
-                    <li><a href="ContactUs.html">Contact</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a th:href="@{/HomePage}">Home</a></li>
+                    <li><a th:href="@{/PageDifferentePieces}">Rooms</a></li>
+                    <li><a th:href="@{/AboutUs}">About Us</a></li>
+                    <li><a th:href="@{/ContactUs}">Contact</a></li>
+                    <li><a th:href="@{/login}">Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -24,28 +24,28 @@
     <main>
         <section class="contact">
             <h2>Contact Us</h2>
-            <form>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
+            <form th:action="@{/send-message}" method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
                 <button type="submit">Send</button>
             </form>
             <div class="contact-info">
                 <h3>Our Contact Details</h3>
-                <p>Email: email@example.com</p>
-                <p>Phone: +123 456 7890</p>
+                <p th:text="'Email: ' + ${contactEmail}">Email: andyy.essomba@gmail.com</p>
+                <p th:text="'Phone: ' + ${contactPhone}">Phone: +237 656 43 87 11</p>
                 <div id="map"></div>
             </div>
         </section>
     </main>
     <footer>
         <div class="contact-info">
-            <p>Contact us: andyy.essomba@gmail.com | +237 656 43 87 11</p>
+            <p th:text="'Contact us: ' + ${contactEmail} + ' | ' + ${contactPhone}">Contact us: andyy.essomba@gmail.com | +237 656 43 87 11</p>
         </div>
         <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
+            <a th:href="@{#}">Facebook</a>
+            <a th:href="@{#}">Twitter</a>
+            <a th:href="@{#}">Instagram</a>
         </div>
     </footer>
     <script>
@@ -62,8 +62,6 @@
             });
         }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </body>
 </html>
