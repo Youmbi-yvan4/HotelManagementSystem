@@ -1,70 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking CM - Rooms</title>
+    <title th:text="${pageTitle}">Booking CM - Rooms</title>
     <link rel="stylesheet" href="/Static/Global.css">
 </head>
 <body>
     <header>
         <div class="navbar">
-            <div class="logo">Booking CM</div>
+            <div class="logo" th:text="${siteName}">Booking CM</div>
             <nav>
                 <ul>
-                    <li><a href="HomePage.html">Home</a></li>
-                    <li><a href="/PageDifferentePieces.html">Rooms</a></li>
-                    <li><a href="AboutUs.html">About Us</a></li>
-                    <li><a href="ContactUs.html">Contact</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a th:href="@{/HomePage}">Home</a></li>
+                    <li><a th:href="@{/PageDifferentePieces}">Rooms</a></li>
+                    <li><a th:href="@{/AboutUs}">About Us</a></li>
+                    <li><a th:href="@{/ContactUs}">Contact</a></li>
+                    <li><a th:href="@{/Login}">Login</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
         <section class="rooms">
-            <h2>Our Rooms</h2>
+            <h2 th:text="${roomsTitle}">Our Rooms</h2>
             <div class="filters">
-                <select>
-                    <option value="all">All Rooms</option>
-                    <option value="single">Single Room</option>
-                    <option value="double">Double Room</option>
+                <select th:field="*{roomType}">
+                    <option value="all" th:text="${allRoomsOption}">All Rooms</option>
+                    <option value="single" th:text="${singleRoomOption}">Single Room</option>
+                    <option value="double" th:text="${doubleRoomOption}">Double Room</option>
                 </select>
-                <select>
-                    <option value="price">Price</option>
-                    <option value="rating">Rating</option>
+                <select th:field="*{sortBy}">
+                    <option value="price" th:text="${priceOption}">Price</option>
+                    <option value="rating" th:text="${ratingOption}">Rating</option>
                 </select>
             </div>
-            <div class="room-cards">
+            <div class="room-cards" th:each="room : ${rooms}">
                 <div class="room-card">
-                    <img src="/Static/Images/Hilton-Yaounde-Hotel-Exter.jpg" alt="Room 1">
-                    <h3>Luxury Room</h3>
-                    <p>From 80,000 XAF / night</p>
-                    <button>See More</button>
-                </div>
-                <div class="room-card">
-                    <img src="/Static/Images/Hilton-Yaounde-Hotel-Exterior.jpg" alt="Room 2">
-                    <h3>Standard Room</h3>
-                    <p>From 65,000 XAF / night</p>
-                    <button>See More</button>
-                </div>
-                <div class="room-card">
-                    <img src="/Static/Images/Hilton-Yaounde-Hotel-Exterior.jpg" alt="Room 3">
-                    <h3>Children's Room</h3>
-                    <p>From 35,000 XAF / night</p>
-                    <button>See More</button>
+                    <img th:src="@{/Static/Images/}" th:alt="${room.name}">
+                    <h3 th:text="${room.name}">Luxury Room</h3>
+                    <p th:text="${room.price}">From 80,000 XAF / night</p>
+                    <button th:text="${seeMoreButton}">See More</button>
                 </div>
             </div>
         </section>
     </main>
     <footer>
         <div class="contact-info">
-            <p>Contact us: andyy.essomba@gmail.com | +237 656 43 87 11</p>
+            <p>Contact us: <span th:text="${contactEmail}">andyy.essomba@gmail.com</span> | <span th:text="${contactPhone}">+237 656 43 87 11</span></p>
         </div>
         <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
+            <a href="#" th:href="${facebookLink}">Facebook</a>
+            <a href="#" th:href="${twitterLink}">Twitter</a>
+            <a href="#" th:href="${instagramLink}">Instagram</a>
         </div>
     </footer>
 </body>
