@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +9,24 @@
 <body>
     <header>
         <div class="navbar">
-            <div class="logo">Booking CM</div>
+            <div class="logo" th:text="${companyName}">Booking CM</div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="PageDifferentePieces.html">Rooms</a></li>
-                    <li><a href="AboutUs.html">About Us</a></li>
-                    <li><a href="ContactUs.html">Contact</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a th:href="@{/HomePage}">Home</a></li>
+                    <li><a th:href="@{/PageDifferentePieces}">Rooms</a></li>
+                    <li><a th:href="@{/AboutUs}">About Us</a></li>
+                    <li><a th:href="@{/ContactUs}">Contact</a></li>
+                    <li><a th:href="@{/login}">Login</a></li>
                 </ul>
             </nav>
         </div>
         <div class="hero">
-            <h1>Find Your Haven of Peace</h1>
-            <form class="search-form">
-                <input type="text" placeholder="Destination">
-                <input type="date">
-                <input type="date">
-                <input type="number" placeholder="Persons">
+            <h1 th:text="${heroTitle}">Find Your Haven of Peace</h1>
+            <form class="search-form" th:action="@{/search}" method="get">
+                <input type="text" name="destination" placeholder="Destination">
+                <input type="date" name="checkin">
+                <input type="date" name="checkout">
+                <input type="number" name="persons" placeholder="Persons">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -35,52 +35,30 @@
         <section class="special-offers">
             <h2>Special Offers</h2>
             <div class="offers">
-                <div class="offer-card">
-                    <img src="/Static/Images/IMG_Hotel.jpg" alt="Hotel 1">
-                    <h3>Hilton Hotel</h3>
-                    <p>Brief Description</p>
-                    <button>See More</button>
-                </div>
-                <div class="offer-card">
-                    <img src="/Static/Images/Hotel-Mont-Febe-Yaounde-Exterior.jpg" alt="Hotel 2">
-                    <h3>Mont-Febe Hotel</h3>
-                    <p>Brief Description</p>
-                    <button>See More</button>
-                </div>
-                <div class="offer-card">
-                    <img src="/Static/Images/ONOMO-HOTEL-800x400.jpg" alt="Hotel 2">
-                    <h3>Onomo Hotel</h3>
-                    <p>Brief Description</p>
-                    <button>See More</button>
-                </div>
-                <div class="offer-card">
-                    <img src="/Static/Images/marr1.jpg" alt="Hotel 2">
-                    <h3>Marriott Hotel</h3>
-                    <p>Brief Description</p>
-                    <button>See More</button>
+                <div class="offer-card" th:each="offer : ${offers}">
+                    <img th:src="@{|/Static/Images/${offer.image}|}" th:alt="${offer.name}">
+                    <h3 th:text="${offer.name}">Hilton Hotel</h3>
+                    <p th:text="${offer.description}">Brief Description</p>
+                    <button th:href="@{/offer/${offer.id}}">See More</button>
                 </div>
             </div>
         </section>
         <section class="testimonials">
             <h2>Testimonials</h2>
-            <div class="testimonial">
-                <p>"Great experience!"</p>
-                <img src="/Static/Images/AndyEssomba.jpg" alt="Client 1">
-            </div>
-            <div class="testimonial">
-                <p>"Highly recommend."</p>
-                <img src="/Static/Images/Client2.jpg" alt="Client 2">
+            <div class="testimonial" th:each="testimonial : ${testimonials}">
+                <p th:text="${testimonial.text}">"Great experience!"</p>
+                <img th:src="@{|/Static/Images/${testimonial.image}|}" th:alt="${testimonial.name}">
             </div>
         </section>
     </main>
     <footer>
         <div class="contact-info">
-            <p>Contact us: andyy.essomba@gmail.com | +237 656 43 87 11</p>
+            <p th:text="'Contact us: ' + ${contactEmail} + ' | ' + ${contactPhone}">Contact us: andyy.essomba@gmail.com | +237 656 43 87 11</p>
         </div>
         <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
+            <a th:href="@{#}">Facebook</a>
+            <a th:href="@{#}">Twitter</a>
+            <a th:href="@{#}">Instagram</a>
         </div>
     </footer>
 </body>
