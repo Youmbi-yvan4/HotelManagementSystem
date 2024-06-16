@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Contactez-nous</title>
+    <link rel="stylesheet" href="/Global.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Booking</div>
+            <nav>
+                <ul>
+                    <li><a href="/HomePage.html">Accueil</a></li>
+                    <li><a href="PageDifferentePieces.html">Chambres</a></li>
+                    <li><a href="AboutUs.html">À propos</a></li>
+                    <li><a href="ContactUs.html">Contact</a></li>
+                    <li><a href="#">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="contact">
+            <h2>Contactez-nous</h2>
+            <form>
+                <input type="text" placeholder="Nom" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+            <div class="contact-info">
+                <h3>Nos Coordonnées</h3>
+                <p>Email : email@example.com</p>
+                <p>Téléphone : +123 456 7890</p>
+                <div id="map"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="contact-info">
+            <p>Contactez-nous : email@example.com |  +123 456 7890</p>
+        </div>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+    <script>
+        // Intégration de la carte Google Maps
+        function initMap() {
+            var location = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+</body>
+</html>
