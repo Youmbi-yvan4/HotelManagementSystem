@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Booking - Room Details</title>
+    <link rel="stylesheet" href="/Static/Global.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" th:text="${siteName}">Booking</div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/HomePage}">Home</a></li>
+                    <li><a th:href="@{/PageDifferentePieces}">Rooms</a></li>
+                    <li><a th:href="@{/AboutUs}">About Us</a></li>
+                    <li><a th:href="@{/ContactUs}">Contact</a></li>
+                    <li><a th:href="@{/Login}">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="room-detail">
+            <div class="room-carousel">
+                <img th:src="@{/Static/Images/deluxe-room-dlx.jpg}" alt="Room 1">
+            </div>
+            <div class="room-info">
+                <h2 th:text="${roomName}">Luxury Room</h2>
+                <p th:text="${roomDescription}">Experience the height of luxury in our spacious and elegantly designed rooms. Each room is equipped with modern amenities and offers a serene atmosphere for a relaxing stay.</p>
+                <ul class="room-features">
+                    <li><i class="icon-wifi"></i> <span th:text="${roomFeatureWifi}">Free Wi-Fi</span></li>
+                    <li><i class="icon-tv"></i> <span th:text="${roomFeatureTv}">Television</span></li>
+                    <li><i class="icon-ac"></i> <span th:text="${roomFeatureAc}">Air Conditioning</span></li>
+                </ul>
+                <div class="booking">
+                    <h3>Availability</h3>
+                    <input type="date">
+                    <button th:text="${bookingButton}">Book Now</button>
+                </div>
+            </div>
+        </section>
+        <section class="reviews">
+            <h2>Customer Reviews</h2>
+            <div class="review" th:each="review : ${reviews}">
+                <p th:text="${review.text}">"Great experience!"</p>
+                <span th:text="${review.rating}">★★★★★</span>
+                <img th:src="@{/Static/Images/}" th:alt="${review.clientName}">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="contact-info">
+            <p>Contact us: <span th:text="${contactEmail}">andyy.essomba@gmail.com</span> | <span th:text="${contactPhone}">+237 656 43 87 11</span></p>
+        </div>
+        <div class="social-media">
+            <a href="#" th:href="${facebookLink}">Facebook</a>
+            <a href="#" th:href="${twitterLink}">Twitter</a>
+            <a href="#" th:href="${instagramLink}">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

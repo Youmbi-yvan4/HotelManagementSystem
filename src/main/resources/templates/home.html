@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Reservation</title>
+    <style>
+        /* Your existing styles here... */
+
+        /* Add some styles for the new features */
+        .search {
+            margin: 20px 0;
+        }
+
+        .room {
+            margin: 20px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .room:last-child {
+            border-bottom: none;
+        }
+
+        .room img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .room h2, .room p {
+            margin: 0;
+        }
+
+        .booking {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header" th:style="'background-image: url(' + @{/image/3.jpeg} + ')'">
+    <h1>Welcome to Our Hostel Reservation Website</h1>
+    <p>Find and book hostels around the world</p>
+</div>
+
+<div class="content">
+    <!-- Hotel Search -->
+    <div class="search">
+        <h2>Search for Hotels</h2>
+        <!-- Add your search form here -->
+    </div>
+
+    <!-- Room View -->
+    <div class="room">
+        <img th:src="@{/image/1.jpeg}" alt="Room Image">
+        <h2>Room 1</h2>
+        <p>This is a description of Room 1.</p>
+    </div>
+
+    <div class="room">
+        <img th:src="@{/image/2.jpeg}" alt="Room Image">
+        <h2>Room 2</h2>
+        <p>This is a description of Room 2.</p>
+    </div>
+
+    <!-- Online Booking -->
+    <div class="booking">
+        <h2>Book a Room</h2>
+        <!-- Add your booking form here -->
+    </div>
+</div>
+
+</body>
+</html>

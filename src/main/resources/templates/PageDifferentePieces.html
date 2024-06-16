@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Booking CM - Rooms</title>
+    <link rel="stylesheet" href="/Static/Global.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" th:text="${siteName}">Booking CM</div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/HomePage}">Home</a></li>
+                    <li><a th:href="@{/PageDifferentePieces}">Rooms</a></li>
+                    <li><a th:href="@{/AboutUs}">About Us</a></li>
+                    <li><a th:href="@{/ContactUs}">Contact</a></li>
+                    <li><a th:href="@{/Login}">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="rooms">
+            <h2 th:text="${roomsTitle}">Our Rooms</h2>
+            <div class="filters">
+                <select th:field="*{roomType}">
+                    <option value="all" th:text="${allRoomsOption}">All Rooms</option>
+                    <option value="single" th:text="${singleRoomOption}">Single Room</option>
+                    <option value="double" th:text="${doubleRoomOption}">Double Room</option>
+                </select>
+                <select th:field="*{sortBy}">
+                    <option value="price" th:text="${priceOption}">Price</option>
+                    <option value="rating" th:text="${ratingOption}">Rating</option>
+                </select>
+            </div>
+            <div class="room-cards" th:each="room : ${rooms}">
+                <div class="room-card">
+                    <img th:src="@{/Static/Images/}" th:alt="${room.name}">
+                    <h3 th:text="${room.name}">Luxury Room</h3>
+                    <p th:text="${room.price}">From 80,000 XAF / night</p>
+                    <button th:text="${seeMoreButton}">See More</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="contact-info">
+            <p>Contact us: <span th:text="${contactEmail}">andyy.essomba@gmail.com</span> | <span th:text="${contactPhone}">+237 656 43 87 11</span></p>
+        </div>
+        <div class="social-media">
+            <a href="#" th:href="${facebookLink}">Facebook</a>
+            <a href="#" th:href="${twitterLink}">Twitter</a>
+            <a href="#" th:href="${instagramLink}">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

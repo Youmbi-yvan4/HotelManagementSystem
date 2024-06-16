@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - About Us</title>
+    <link rel="stylesheet" href="/Static/Global.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" th:text="${companyName}">Booking</div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/HomePage}">Home</a></li>
+                    <li><a th:href="@{/PageDifferentePieces}">Rooms</a></li>
+                    <li><a th:href="@{/AboutUs}">About Us</a></li>
+                    <li><a th:href="@{/ContactUs}">Contact</a></li>
+                    <li><a th:href="@{/login}">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="about">
+            <h2>Our History</h2>
+            <p th:text="${historyText}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.</p>
+            <img th:src="@{/Static/Images/hotel-history.jpg}" alt="Hotel History">
+        </section>
+        <section class="team">
+            <h2>Our Team</h2>
+            <div class="team-member" th:each="member : ${teamMembers}">
+                <img th:src="@{|/Static/Images/${member.image}|}" th:alt="${member.name}">
+                <h3 th:text="${member.name}">John Smith</h3>
+                <p th:text="${member.position}">General Manager</p>
+            </div>
+        </section>
+        <section class="awards">
+            <h2>Awards and Certifications</h2>
+            <ul>
+                <li th:each="award : ${awards}" th:text="${award}">Best Hotel Award 2023</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <div class="contact-info">
+            <p th:text="'Contact us: ' + ${contactEmail} + ' | ' + ${contactPhone}">Contact us: andyy.essomba@gmail.com | +237 656 43 87 11</p>
+        </div>
+        <div class="social-media">
+            <a th:href="@{#}">Facebook</a>
+            <a th:href="@{#}">Twitter</a>
+            <a th:href="@{#}">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>
